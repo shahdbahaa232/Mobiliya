@@ -39,8 +39,8 @@ p{
 }
 
 .btn {
-  display: block;        /* يخلي الزر ياخد سطر لوحده */
-  margin: 30px auto;     /* auto يخليه في النص أفقي */
+  display: block;        
+  margin: 30px auto; 
   width: 170px;
   height: 45px;
   background-color: #1D4358;

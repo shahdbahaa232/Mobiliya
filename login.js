@@ -1,11 +1,11 @@
 document.getElementById("LoginInForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // يمنع الفورم من إعادة تحميل الصفحة
+  e.preventDefault(); 
 
   const UserName = document.getElementById("UserName").value.trim();
   const password = document.getElementById("password").value.trim();
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
-  // تحقق من المستخدم
+
   const user = users.find(u => u.username.toLowerCase() === UserName.toLowerCase());
 if (!user) {  
   Swal.fire({
@@ -20,7 +20,7 @@ if (!user) {
     }
   });
 }else if (user.password !== password) {
-    // اليوزر موجود لكن الباسورد غلط
+   
     Swal.fire({
       icon: 'error',
       title: 'Wrong password',
@@ -29,7 +29,7 @@ if (!user) {
       confirmButtonColor:'#1D4358'
     });
   }else {
-    // تسجيل الدخول ناجح
+
     localStorage.setItem("loggedInUser", JSON.stringify(user));
     Swal.fire({
       icon: 'success',
@@ -39,7 +39,7 @@ if (!user) {
       confirmButtonColor:'#1D4358'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "home.html";
+        window.location.href = "index.html";
       }
     });
   }

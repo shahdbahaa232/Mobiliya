@@ -6,14 +6,13 @@ function loadFile(event)
 }
 
 document.getElementById("signUpForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // يمنع الفورم من إعادة تحميل الصفحة
+  e.preventDefault(); 
   // json 
   const username = document.getElementById("UserName").value.trim();
   const password = document.getElementById("password").value.trim();
   
   let users =JSON.parse(localStorage.getItem("users")) || [];
 
-  // تأكد إن اليوزر مش موجود قبل كده
   const exists = users.some(u => u.username.toLowerCase() === username.toLowerCase());
   if (exists) {
     Swal.fire({
@@ -24,7 +23,7 @@ document.getElementById("signUpForm").addEventListener("submit", function(e) {
       confirmButtonColor:'#1D4358'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       }
     });
     return;
@@ -40,7 +39,7 @@ document.getElementById("signUpForm").addEventListener("submit", function(e) {
     confirmButtonColor:'#1D4358'
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     }
   });
 
