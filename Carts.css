@@ -1,0 +1,59 @@
+body{
+    padding: 0px;
+}
+h1{
+  font-size: 40px;
+  color: #1D4358;
+  display: inline-block;  
+  border-bottom: 3px solid #1D4358; 
+  padding-bottom: 5px; 
+  margin-left: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;          
+  padding-top: 10px;
+  margin-top: 10px;
+  justify-content: space-around;
+}
+.card {
+  background-color: #c4c4c480;
+  width: 230px;
+  height: 300px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 10px;          
+}
+img{
+   width: 200px;
+  height: 200px;
+  margin-left: 10px;
+}
+p{
+  text-align: center;
+  font-size: 20px;
+  margin-top: 5px;
+  color:#1D4358;
+}
+
+.btn {
+  display: block;        /* يخلي الزر ياخد سطر لوحده */
+  margin: 30px auto;     /* auto يخليه في النص أفقي */
+  width: 170px;
+  height: 45px;
+  background-color: #1D4358;
+  border: none;
+  color: #FFF;
+  font-size: 19px;
+  text-align: center;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.btn:hover{
+  background: #0d2634;
+}
+

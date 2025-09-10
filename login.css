@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+}
+h1{
+  margin: 20px;
+  font-size: 40px;
+  color: #1D4358;
+  display: inline-block;  
+  border-bottom: 3px solid #1D4358; 
+  padding-bottom: 5px;     
+
+}
+  .icon {
+    width: 100px;
+    height: 100px;
+    background: #1D4358;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 5px;
+    color: #fff;
+      font-size: 48px;
+      margin-top: -110px;
+   }
+
+.login-img{
+    background-image:url("./img/login_img2.jfif");
+    width:50vw;   
+    height: 100vh;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+ .login-box {
+      width: 400px;
+      height: 330px;
+      background: #F5F3F3;
+      padding: 60px;
+      border-radius: 20px;
+      margin-left: 80px;
+      font-size: 21px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .input{
+      text-align: start;
+      margin-top: 30px;
+      font-weight: bold;
+      color: #1D4358;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 25px;
+      border: none;
+      border-radius: 8px;
+      background: #E6E5E5;
+      outline: none;
+      margin-left: -10px;
+    }
+    
+    .login-box .password-box {
+      position: relative;
+    }
+
+    .login-box .password-box input {
+      padding-right: 40px;
+    }
+    .forget {
+      text-align: right;
+      margin-bottom: 15px;
+      font-size: 15px;
+      color: #555;
+      cursor: pointer;
+    }
+    a{
+      text-align: center;
+      font-size: 15px;
+      color: #555;
+      cursor: pointer;
+      padding-top: -15px;
+    }
+    .login-btn {
+      width: 50%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #1D4358;
+      color: #fff;
+      font-size: 19px;
+      transition: 0.3s;
+      align-items: center;
+    }
+
+    .login-btn:hover {
+      background: #0d2634;
+    }
+
+    .social-login {
+      margin-top: 15px;
+      font-size: 25px;
+    }
+
+    .social-login i {
+      margin: 0 8px;
+      cursor: pointer;
+      color: #1D4358;
+    }
+
+  

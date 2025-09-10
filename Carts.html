@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carts</title>
+    <link rel="stylesheet" href="Carts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+  <h1>Carts</h1>
+  <div class="container" id="cart-container"></div>
+  <button class="btn" onclick="calcTotal()">Total Price</button>
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartContainer = document.getElementById("cart-container");
+    function renderCart() {
+      cartContainer.innerHTML = "";
+      cart.forEach((item) => {
+        cartContainer.innerHTML += `
+          <div class="card">
+            <img src="${item.img}">
+            <p>
+              The price : <span>${item.price}</span><br>
+              Quantity : ${item.quantity}<br>
+              Subtotal : ${parseInt(item.price) * item.quantity} EP
+            </p>
+          </div>
+        `;
+      });
+    }
+    function calcTotal() {
+      let total = 0;
+      let invoiceHTML = `
+        <h2>🧾 Invoice</h2>
+        <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; text-align:center;">
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+      `;
+      cart.forEach(item => {
+        let subtotal = parseInt(item.price) * item.quantity;
+        total += subtotal;
+        invoiceHTML += `
+          <tr>
+            <td><img src="${item.img}" width="50"></td>
+            <td>${item.price}</td>
+            <td>${item.quantity}</td>
+            <td>${subtotal} EP</td>
+          </tr>
+        `;
+      });
+      invoiceHTML += `
+          <tr>
+            <td colspan="3"><strong>Total</strong></td>
+            <td><strong>${total} EP</strong></td>
+          </tr>
+        </table>
+      `;
+      Swal.fire({
+        title: 'Your Invoice',
+        html: invoiceHTML,
+        width: 600,
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Checkout',
+        confirmButtonColor: '#1D4358',
+        denyButtonText: 'Print Invoice',
+        denyButtonColor: '#1D4358',
+        cancelButtonText: 'Close',
+        showClass: { popup: 'animate__animated animate__fadeInLeft' },
+        hideClass: { popup: 'animate__animated animate__fadeOutRight' }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          checkout();
+        } else if (result.isDenied) {
+          printInvoice(invoiceHTML);
+        }
+      });
+    }
+
+    function checkout() {
+    Swal.fire({
+    icon: 'success',
+    title: '✅ Thank you!',
+    text: 'Your order has been placed successfully.',
+    timer: 2000,
+    showConfirmButton: false
+    }).then(() => {
+    localStorage.removeItem("cart");
+    cart = [];
+    renderCart();
+    window.location.href="Home.html";
+    });
+    }
+    function printInvoice(invoiceHTML) {
+      let win = window.open('', '', 'height=700,width=900');
+      win.document.write('<html><head><title>Invoice</title></head><body>');
+      win.document.write(invoiceHTML);
+      win.document.write('</body></html>');
+      win.document.close();
+      win.print();
+    }
+
+    window.addEventListener("storage", function(event) {
+    if (event.key === "cart") {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    renderCart();
+    
+    }
+    });
+
+    renderCart();
+  </script>
+</body>
+
+
+</html>
